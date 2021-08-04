@@ -8,11 +8,14 @@ Trained on pytorch==1.8.1 and numpy 1.20.3.
 
 ## Signatures
 Pre-computed signatures are available in the 'sigs/' directory.  Performance summaries below:
+
 PE: 1000 signatures.  0.06% FPR on VT benign corpus; 85.63% TPR on VT malicious corpus.  Samples collected from 2020 to 2021.
+
 ELF: 968 signatures.  Tuned for 0% FPR on an Ubuntu corpus; 0.14% FPR on VT benign corpus; 85.10% TPR on VT malicious corpus.
+
 MachO: 715 signatures.  0.4% FPR on VT benign corpus; 97.77% TPR on VT malicious corpus.
 
-Please let me know how valuable you find these sigs!
+These sigs perform a little better than the numbers quoted in the BH talk.  What a difference a month makes!
 
 ## Usage
 ### Generating signatures
