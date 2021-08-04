@@ -36,7 +36,7 @@ samples/033cc1fba7e8cc1f1c569ee777e9199b323a6a78cd8b787cc0070e932433e921 best si
 samples/0bc7f66fee7e3903aca78b22a14b9dafee7110612a58f88f6833eda2ecf3b200 best sig (score=19.023, offset=0001bbe9): {b"\xc5B\xaf\x85\xb9\x94\xf3\x8e\t\xd3\xcb\x9f\x88'G\xbb\x1dtT\xb8\xd1\xe3\xb8/\xfe\x7f"}
 samples/07491fe6421744ea1402f23d01bd2bc5e582e3375e08e9ce713b2239766c0466 best sig (score=0.829, offset=000058be): {b'\xff\x89\x9d\x90\xf4\xff\xfft\x0c\xff\xb5d\xfd\xff\xff\xff\x15,\x10\x00\x01\xc7\x85\xa8\xf4\xff'}
 samples/0d891622b8f23824e1cfbd915a61f1ad130c601bf09fea0edb4223f2daaf4705 best sig (score=4.303, offset=0000054c): {b'\x10\x00\x00\xa1PQ@\x00\x85\xc0tX\xa3P0@\x00\x8b\x15\xdca@\x00\x85\xd2\x0f'}
-signature success rate: (11/11)
+signature success rate: (10/11)
 writing out yara rule to pe_test.yar
 ```
 
