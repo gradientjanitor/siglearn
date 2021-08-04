@@ -97,7 +97,7 @@ if __name__ == "__main__":
                 best_sig = subsample[idx:idx+nlen]
                 best_offset = idx + i
 
-        if best_sig is not None:
+        if best_sig is not None and best_yp > score_threshold:
             sigs.append(best_sig)
 
         print("%s best sig (score=%0.3f, offset=%08x): {%s}" % (uri, best_yp, best_offset, best_sig))
