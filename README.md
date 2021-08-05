@@ -4,18 +4,18 @@ Code for BH21 talk: "Generating YARA Rules by Classifying Malicious Byte Sequenc
 ## Requirements
 Requires numpy, pytorch, and boto3.  boto3 is only used to grab training binaries from s3.  That's where mine were stored, but you can load samples from the filesystem just as well.
 
-Trained on pytorch==1.8.1 and numpy 1.20.3.
+Trained on pytorch==1.8.1 and numpy==1.20.3.
 
 ## Signatures
 Pre-computed signatures are available in the 'sigs/' directory.  Performance summaries below:
 
-PE: 1000 signatures.  0.06% FPR on VT benign corpus; 85.63% TPR on VT malicious corpus.  Samples collected from 2020 to 2021.
+|           |  Num Signatures    |  FPR                 |    TPR     |           Misc                                                      |
+|-----------|--------------------|----------------------|------------|---------------------------------------------------------------------|
+|     PE    |       1000         |  0.06%               |  85.63%    | 10mil benign / 10mil malicious collected from 2020-2021             |
+|   ELF     |        968         | 0% Ubuntu / 0.14% VT |  85.10%    | 4.5mil Ubuntu / 1mil benign / 84k malicious collected from 2016-2021|
+| Mach-O    |        715         | 0.4%                 |  97.77%    | 9mil benign / 1mil malicious collected from 2014-2021               |
 
-ELF: 968 signatures.  Tuned for 0% FPR on an Ubuntu corpus; 0.14% FPR on VT benign corpus; 85.10% TPR on VT malicious corpus.
-
-MachO: 715 signatures.  0.4% FPR on VT benign corpus; 97.77% TPR on VT malicious corpus.
-
-These sigs perform a little better than the numbers quoted in the BH talk.  What a difference a month makes!
+These sigs perform a little better than the numbers quoted in the BH talk due to improvements in the training methodology (improved replay buffer system and removing sample truncation at 1mb).
 
 ## Usage
 ### Generating signatures
