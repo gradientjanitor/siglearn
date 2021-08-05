@@ -1,5 +1,5 @@
 # siglearn
-Code for BH21 talk: "Generating YARA Rules by Classifying Malicious Byte Sequences"
+Code for BH21 talk: ["Generating YARA Rules by Classifying Malicious Byte Sequences"](https://www.blackhat.com/us-21/briefings/schedule/#generating-yara-rules-by-classifying-malicious-byte-sequences-23065)
 
 ## Requirements
 Requires numpy, pytorch, and boto3.  boto3 is only used to grab training binaries from s3.  That's where mine were stored, but you can load samples from the filesystem just as well.
@@ -9,13 +9,23 @@ Trained on pytorch==1.8.1 and numpy==1.20.3.
 ## Signatures
 Pre-computed signatures are available in the 'sigs/' directory.  Performance summaries below:
 
-|           |  Num Signatures    |  FPR                 |    TPR     |           Misc                                                      |
-|-----------|--------------------|----------------------|------------|---------------------------------------------------------------------|
-|     PE    |       1000         |  0.06%               |  85.63%    | 10mil benign / 10mil malicious collected from 2020-2021             |
-|   ELF     |        968         | 0% Ubuntu / 0.14% VT |  85.10%    | 4.5mil Ubuntu / 1mil benign / 84k malicious collected from 2016-2021|
-| Mach-O    |        715         | 0.4%                 |  97.77%    | 9mil benign / 1mil malicious collected from 2014-2021               |
+### Sig efficacy, Training Corpus (20xx-May 2021)
+|           |  Num Signatures    |  FPR                 |    TPR     |           Misc                                                          |
+|-----------|--------------------|----------------------|------------|-------------------------------------------------------------------------|
+|     PE    |       1000         |  0.06%               |  85.63%    | 10mil benign / 10mil malicious collected from 2020-April 2021           |
+|   ELF     |        968         | 0% Ubuntu / 0.14% VT |  85.10%    | 4.5mil Ubuntu / 1mil benign / 84k malicious collected from 2016-Jan 2021|
+| Mach-O    |        715         | 0.4%                 |  97.77%    | 9mil benign / 1mil malicious collected from 2014- April 2021            |
 
 These sigs perform a little better than the numbers quoted in the BH talk due to improvements in the training methodology (improved replay buffer system and removing sample truncation at 1mb).
+
+### Model efficacy, Validation Corpus (May 2021-Aug 2021)
+|           |  FPR    |    TPR     |           Misc                                                                                |
+|-----------|---------|------------|-----------------------------------------------------------------------------------------------|
+|   PE      |  0.55%  |  81.39%    | 3.4mil benign, 23mil malicious                                                                |
+|   ELF     |  0.92%  |  90.47%    | 146k benign, 6k malicious, Changed threshold from 4 to 5 to reduce FPs at the expense of TPs. |
+| Mach-O    |  0.04%  |  84.62%    | 550k benign, 458 malicious                                                                    |
+
+This table should give you an idea of what kind of signature success rate you could expect from recent malware from VT.  Expect this to degrade over time.
 
 ## Usage
 ### Generating signatures
