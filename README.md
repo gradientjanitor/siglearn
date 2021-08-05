@@ -1,5 +1,5 @@
 # siglearn
-Code for BH21 talk: ["Generating YARA Rules by Classifying Malicious Byte Sequences"](https://www.blackhat.com/us-21/briefings/schedule/#generating-yara-rules-by-classifying-malicious-byte-sequences-23065)
+Code for BH21 talk: ["Generating YARA Rules by Classifying Malicious Byte Sequences"](https://www.blackhat.com/us-21/briefings/schedule/#generating-yara-rules-by-classifying-malicious-byte-sequences-23065).  Slides at "bh 21.pdf" in this repo.
 
 ## Requirements
 Requires numpy, pytorch, and boto3.  boto3 is only used to grab training binaries from s3.  That's where mine were stored, but you can load samples from the filesystem just as well.
