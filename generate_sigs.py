@@ -108,7 +108,7 @@ if __name__ == "__main__":
     # dump out yara rule
     with open(yara_filename, "w") as fid:
         for sig in sigs:
-            fid.write("rule AUTO_%s: {\n" % sig.hex())
+            fid.write("rule AUTO_%s: {\n" % sig.hex().replace('?','q'))
             fid.write("    strings:\n")
             fid.write("        $a = {%s}\n" % sig.hex())
             fid.write("    condition:\n")
